@@ -23,8 +23,6 @@ export default class Home extends Component {
 
     render() {
         return (<div>
-            {/* <Link to='/create'>Create a new game entry</Link> */}
-            <p>Search to come</p>
             <ul class="data-list">
                 {this.state.games.map(game => 
                     <Link key={game.name} to={`/game/${game.name}`}>

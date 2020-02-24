@@ -9,7 +9,8 @@ export default class CreateGame extends Component {
         image_url: 'https://placekitten.com/200/300',
         price: null,
         publisher: null,
-        categories: [],
+        allCategories: ['strategy', 'cooperative'],
+        categories: null,
         min_players: null,
         max_players: null,
         have_played: null,
@@ -28,7 +29,7 @@ export default class CreateGame extends Component {
             year: this.state.year,
             image_url: this.state.image_url,
             price: this.state.price,
-            publisher: this.state.publisher,
+            publisher_id: this.state.publisher_id,
             categories: this.state.categories,
             min_players: this.state.min_players,
             max_players: this.state.max_players,
@@ -54,9 +55,9 @@ export default class CreateGame extends Component {
         this.setState({ price: Number(e.target.value) });
     }
     
-    handlePublisherChange = (e) => {
+    handlePublisherIdChange = (e) => {
         // Publisher will have its own table and joined to the games table
-        this.setState({ publisher: Number(e.target.value) });
+        this.setState({ publisher_id: Number(e.target.value) });
     }
 
     handleCategoryChange = (e) => {
@@ -93,14 +94,14 @@ export default class CreateGame extends Component {
                         <input id='gameImageUrl' type='text' onChange={this.handleImageUrlChange}></input>
                     </label>
                     <label forhtml='gamePrice'><span>Price:</span>
-                        <input id='gamePrice' type='number' onChange={this.handlePriceChange}></input>
+                        <input id='gamePrice' type='type' onChange={this.handlePriceChange}></input>
                     </label>
-                    <label forhtml='gamePublisher'><span>Publisher:</span>
-                        <input id='gamePublisher' type='text' onChange={this.handlePublisherChange}></input>
+                    <label forhtml='gamePublisherId'><span>Publisher ID:</span>
+                        <input id='gamePublisherId' type='number' onChange={this.handlePublisherIdChange}></input>
                     </label>
-                    <label forhtml='gameCategories'><span>Category:</span>
-                        <select onChange={this.handleCategoriesChange}>
-                            {this.state.categories.map(category => <option value={category.id}>{category.name}</option>)}
+                    <label forhtml='gameCategory'><span>Category:</span>
+                        <select id='gameCategory' onChange={this.handleCategoryChange}>
+                            {this.state.allCategories.map(category => <option value={category}>{category}</option>)}
                         </select>
                     </label>
                     <label forhtml='gameMinPlayers'><span>Min. players:</span>

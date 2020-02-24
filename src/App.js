@@ -16,9 +16,11 @@ export default class App extends Component {
     <Router>
       <div className="App">
         <header className="App-header">
-          Hello! Welcome to our games.
+          <h2>Hello! Welcome to our games.</h2>
         </header>
         <Link to='/create'>Create a new game entry</Link>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <Link to='/delete'>Delete a game entry</Link>
         <Switch>
           <Route exact path='/create' component={CreateGame} />
           {/* <Route exact path='/list' component={List} /> */}
