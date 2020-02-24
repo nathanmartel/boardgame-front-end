@@ -1,34 +1,36 @@
 import React, { Component } from 'react';
-import Link from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import GameDetails from './GameDetails.js';
+// import CreateGame from './CreateGame.js';
 import request from 'superagent';
 
 export default class Home extends Component {
     state = {
-        games: [],
+        games: []
     }
 
     async getGames() {
-        const URL = 'https://sheltered-ridge-05699.herokuapp.com/api/data';
+        const URL = 'https://sheltered-ridge-05699.herokuapp.com/api/games';
         const gameData = await request.get(URL);
         return gameData;
     }
 
     async componentDidMount() {
+        console.log('Home mounted');
         const gameData = await this.getGames();
-        this.state.games = gameData;
+        this.setState({ games: gameData.body });
     }
 
     render() {
         return (<div>
-            <ul>
+            {/* <Link to='/create'>Create a new game entry</Link> */}
+            <p>Search to come</p>
+            <ul class="data-list">
                 {this.state.games.map(game => 
                     <Link key={game.name} to={`/game/${game.name}`}>
                     <GameDetails game={game} />
                     </Link>)}
             </ul>
-            <p>Create new item come</p>
-            <p>Search to come</p>
         </div>)
     }
 }

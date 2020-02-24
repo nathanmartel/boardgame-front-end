@@ -1,0 +1,38 @@
+form {
+    width: 50%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+label {
+    width: 100%;
+    margin-right: 10px;
+    text-align: right;
+}
+
+label span {
+    width: 90px;
+    margin-right: 10px;
+    text-align: right;
+}
+
+label.have-played span {
+    width: 250px;
+    margin-right: 10px;
+    text-align: right;
+}
+
+input, select {
+    width: calc(100% - 100px);
+    margin-bottom: 10px;
+}
+
+label.have-played select {
+    width: calc(100% - 250px);
+    margin-bottom: 10px;
+}
+
+input::after, select::after {
+    content: '&nbsp;';
+    display: block;
+}
