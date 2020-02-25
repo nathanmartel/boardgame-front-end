@@ -9,23 +9,20 @@ export default class DeleteGame extends Component {
     }
 
     async getGames() {
-        const URL = 'https://sheltered-ridge-05699.herokuapp.com/api/games';
+        const URL = `https://sheltered-ridge-05699.herokuapp.com/api/games/${this.props.match.params.id}`;
         const gameData = await request.get(URL);
         return gameData;
     }
 
     async componentDidMount() {
-        console.log('Home mounted');
+        console.log('DeleteGame mounted');
         const gameData = await this.getGames();
         this.setState({ games: gameData.body });
     }
 
     async deleteGame() {
-        const oldGame = {
-            id: this.state.id,
-        }
-        const URL = 'https://sheltered-ridge-05699.herokuapp.com/api/deletegame';
-        await request.post(URL, oldGame);
+        const URL = `https://sheltered-ridge-05699.herokuapp.com/api/games/${this.props.match.params.id}`;
+        await request.delete(URL);
         this.props.history.push('/');
     }
 

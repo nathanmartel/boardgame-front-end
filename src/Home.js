@@ -23,9 +23,9 @@ export default class Home extends Component {
 
     render() {
         return (<div>
-            <ul class="data-list">
+            <ul className="data-list">
                 {this.state.games.map(game => 
-                    <Link key={game.name} to={`/game/${game.name}`}>
+                    <Link key={game.id} to={`/game/${game.id}`}>
                     <GameDetails game={game} />
                     </Link>)}
             </ul>
